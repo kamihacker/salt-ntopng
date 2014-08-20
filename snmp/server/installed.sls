@@ -1,9 +1,9 @@
-{%- from "snmp/map.jinja" import snmp with context -%}
-{%- from "snmp/lib.sls" import package with context -%}
-{%- from "snmp/lib.sls" import service with context -%}
-{%- from "snmp/lib.sls" import config with context -%}
+{%- from "snmp/server/map.jinja" import snmp with context -%}
+{%- from "snmp/server/lib.sls" import package with context -%}
+{%- from "snmp/server/lib.sls" import service with context -%}
+{%- from "snmp/server/lib.sls" import config with context -%}
 
-snmp.installed:
+snmp.server.installed:
   pkg.{{ 'latest' if package.upgrade else 'installed' }}:
     - name: {{ snmp.package }}
   {% if service.manage -%}
@@ -11,11 +11,11 @@ snmp.installed:
     - name: {{ service.name }}
     - enable: {{ service.enable }}
     - require:
-      - pkg: snmp.installed
-      - file: snmp.installed
+      - pkg: snmp.server.installed
+      - file: snmp.server.installed
     - watch:
-      - pkg: snmp.installed
-      - file: snmp.installed
+      - pkg: snmp.server.installed
+      - file: snmp.server.installed
   {% endif -%}
   {% if config.manage %}
   file.managed:
@@ -26,5 +26,5 @@ snmp.installed:
     - group: root
     - mode: 644
     - require:
-      - pkg: snmp.installed
+      - pkg: snmp.server.installed
   {% endif %}

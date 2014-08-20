@@ -1,6 +1,8 @@
 include:
-  - snmp.installed
+  - snmp.server.installed
+  - snmp.client.installed
 
 snmp:
   require:
-    - sls: snmp.installed
+    - sls: snmp.server.installed
+    - sls: snmp.client.installed
