@@ -11,4 +11,4 @@ snmp:
   lookup:
     package: snmp
     service: snmp
-    config: /etc/snmp.conf
+    config: /etc/snmp/snmp.conf
