@@ -9,9 +9,10 @@ Please refer to example.pillar.sls for a list of available pillar configuration 
 
 Usage
 -----
-Apply state 'snmp.install' to install netsnmp to target minions
-Apply state 'snmp.purge' to remove netsnmp from target minions
-State 'snmp' is provided as an alias for 'netsnmp.install'
+Apply state 'snmp.server.install' to install netsnmp server to target minions
+Apply state 'snmp.client.install' to install netsnmp client to target minions
+Apply state 'snmp.purge' to remove all netsnmp packages and configuration from target minions
+State 'snmp' is provided as an alias for snmp.server.install + snmp.client.install
 
 Compatibility
 -------------
