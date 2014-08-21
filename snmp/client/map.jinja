@@ -1,8 +1,8 @@
 {% set snmp = salt['grains.filter_by']( {
   'Debian': {
-    'package': 'snmpd',
+    'package': 'snmp',
   },
   'RedHat': {
-    'package': 'net-snmp',
+    'package': 'net-snmp-utils',
   },
 }, merge=salt['pillar.get']('snmp:lookup:client')) %}
